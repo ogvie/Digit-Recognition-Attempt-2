@@ -1,4 +1,5 @@
 import os
+import math
 import cv2 #load and process images
 import numpy as np
 import matplotlib.pyplot as plt #used to generate and visualise the numbers we will predict
@@ -20,34 +21,33 @@ import tensorflow as tf #machine learning part
 
 #train model here
 #model.fit(x_train, y_train, epochs=5) #epochs is how many times we go through the same data
-
+rt 
 #model.save("digitrecogniser.model") 
 
 model = tf.keras.models.load_model("digitrecogniser.model") 
-
+rew
 #loss, accuracy = model.evaluate(x_test, y_test)
 #print(loss)
 #print(accuracy)
 
 image_number = 1
-#while os.path.isfile(f"digits/digit{image_number}.png"):
-#    try:
-#        for x in range(5):
-#            img = cv2.imread(f"digits/digit{image_number}.png")[:,:,0]
-#            img = np.invert(np.array([img]))
-#            prediction = model.predict(img)
-#            print(f"The digit is probably a {np.argmax(prediction)}")
-#            plt.imshow(img[0], cmap=plt.cm.binary)
-#            plt.show()
-#    except:
-#        print("Error...")
-#    finally:
-#        image_number +=1
-
-for x in range(5):
+while os.path.isfile(f"digits/digit{image_number}.png"):
+    try:
             img = cv2.imread(f"digits/digit{image_number}.png")[:,:,0]
             img = np.invert(np.array([img]))
             prediction = model.predict(img)
             print(f"The digit is probably a {np.argmax(prediction)}")
             plt.imshow(img[0], cmap=plt.cm.binary)
             plt.show()
+    except:
+        print("Error...")
+    finally:
+        image_number +=1
+
+""" for x in range(5):
+            img = cv2.imread(f"digits/digit{image_number}.png")[:,:,0]
+            img = np.invert(np.array([img]))
+            prediction = model.predict(img)
+            print(f"The digit is probably a {np.argmax(prediction)}")
+            plt.imshow(img[0], cmap=plt.cm.binary)
+            plt.show() """
